@@ -1,0 +1,17 @@
+{
+  "cityNames": [
+    "Mexico City", "New York City", "Los Angeles", "Toronto", "Chicago", "Houston", 
+    "Montreal", "Phoenix", "Philadelphia", "San Antonio", "San Diego", "Dallas", "Austin",
+    "Jacksonville", "San Jose", "Fort Worth", "Columbus", "Charlotte", "Indianapolis", 
+    "San Francisco", "Seattle", "Denver", "Oklahoma City", "Nashville", "El Paso",
+    "Washington D.C.", "Las Vegas", "Boston", "Portland", "Louisville", "Memphis", 
+    "Detroit", "Baltimore", "Milwaukee", "Albuquerque", "Sacramento", "Atlanta", "New Orleans"
+  ],
+  "teamNames": [
+    "Aristocrats", "Mermaids", "Forces", "Sharks", "Owls", "Vampires", "Giants", 
+    "Foxes", "Beavers", "Pioneers", "Mustangs", "Leopards", "Huskies", "Bandits", 
+    "Bulldogs", "Angels", "Dreamers", "Cougars", "Lions", "Tigers", "Dolphins", 
+    "Wolves", "Iguanas", "Blobfishes", "Cannibals", "Skin Walkers", "Cryptids", 
+    "Moth Men", "Vultures"
+  ]
+}

@@ -1,0 +1,28 @@
+# mac venv files
+bin
+include
+lib
+pyvenv.cfg
+
+# windows venv files
+Include
+Lib
+Scripts
+pyvenv.cfg
+SimpleHoopsSim.egg-info
+
+# exclude all pycache
+**/__pycache__/*
+__pycache__/
+__pycache__/*
+/pycache
+/pycache/*
+
+# Text Editor Configs
+.vscode
+
+# Output files
+output/*
+
+# Miscellaneous
+Notes.txt
