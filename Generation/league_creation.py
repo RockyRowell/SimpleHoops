@@ -10,6 +10,7 @@ from Generation.team_generation import TeamGeneration
 from Generation.player_generation import PlayerGeneration
 from Generation.physicals_generation import PhysicalsGeneration
 from Generation.offense_generation import OffenseGeneration
+from Generation.defense_generation import DefenseGeneration
 
 
 class LeagueGeneration:
@@ -31,6 +32,7 @@ class LeagueGeneration:
         # create df for future for loop
         physicals_df = pd.DataFrame(columns=['Player', 'Height', 'Weight'])
         offense_df = pd.DataFrame(columns=['Player', 'Three Point', 'Mid Range', 'Free Throw', 'Post Scoring'])
+        defense_df = pd.DataFrame(columns=['Player', 'Perimeter Defense', 'Post Defense', 'Defensive Rebounding', 'Offensive Rebounding', 'Steal', 'Block'])
 
 
         # for loop for each player generation
@@ -58,14 +60,30 @@ class LeagueGeneration:
             
             # add to existing df
             offense_df = pd.concat([offense_df, new_offense], ignore_index=True)
+            
+            
+            ## defense generation
+            # generate values
+            defense_gen = DefenseGeneration(player, physicals)
+            new_defense = defense_gen.defense_generation()
+            
+            # add to existing df
+            defense_df = pd.concat([defense_df, new_defense], ignore_index=True)
         
         
         # Create Main Dataset
-        # combine physicals and offense data if needed
-        combined_df = pd.concat([physicals_df, offense_df.drop(columns=['Player'])], axis=1)
+        # combine physicals, offense, and defense dataframes while dropping player column from offense and defense
+        combined_df = physicals_df.merge(offense_df, on="Player").merge(defense_df, on="Player")
             
-        # create overall rating and sort by it
-        combined_df['Overall'] = combined_df.iloc[:, 5:13].mean(axis=1)
+            
+        # create overall rating
+        combined_df['Overall'] = combined_df.iloc[:, 5:19].mean(axis=1)
+        
+        # round overall rating to 2 decimal places
+        combined_df['Overall'] = pd.to_numeric(combined_df['Overall'], errors='coerce')
+        combined_df['Overall'] = combined_df['Overall'].round(2)
+
+        # sort by overall rating
         combined_df = combined_df.sort_values(by='Overall', ascending=False)
         
         
