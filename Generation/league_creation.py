@@ -69,7 +69,7 @@ class LeagueGeneration:
         combined_df = combined_df.sort_values(by='Overall', ascending=False)
         
         
-        # Draft players to teams in snake order
+        # Draft players to teams in snake order  THIS WILL NEED TO CHANGE LATER!!!
         team_names = team_list['Team Name'].tolist()
         num_teams = len(team_names)
         team_assignments = []
@@ -97,8 +97,22 @@ class LeagueGeneration:
         combined_df['Team'] = team_assignments
         
         
-        # End by returning Main Dataset
-        return combined_df
+        # save data to a csv file
+        file_path = Path(r'Code\Data\GeneratedData\league_players.csv')
+        combined_df.to_csv(file_path, index=False)
+        
+        
+        # save data to a json file
+        file_path = Path(r'Code\Data\GeneratedData\rosters.json')
+        
+        # hierarchy by team
+        league_data = {}
+        for team in team_names:
+            league_data[team] = combined_df[combined_df['Team'] == team].to_dict(orient='records')
+        # save to json file
+        with open(file_path, 'w') as file:
+            import json
+            json.dump(league_data, file, indent=4)
         
         
         
