@@ -14,7 +14,7 @@ class TeamGeneration:
     
     def team_generation(self):
         # pull the file of team names
-        with open(r'Code\NameLists\team_city.json', 'r') as file:
+        with open(r'Code\Data\NameLists\team_city.json', 'r') as file:
             file = json.load(file)
         
         # extract lists

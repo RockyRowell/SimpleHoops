@@ -6,10 +6,10 @@ import pandas as pd
 from pathlib import Path
 
 # import files
-from GameFiles.team_generation import TeamGeneration
-from GameFiles.player_generation import PlayerGeneration
-from GameFiles.physicals_generation import PhysicalsGeneration
-from GameFiles.offense_generation import OffenseGeneration
+from Generation.team_generation import TeamGeneration
+from Generation.player_generation import PlayerGeneration
+from Generation.physicals_generation import PhysicalsGeneration
+from Generation.offense_generation import OffenseGeneration
 
 
 class LeagueGeneration:
