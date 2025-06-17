@@ -14,7 +14,7 @@ class PlayerGeneration:
     
     def player_generation(self):
         # pull the file of player names
-        with open('C:\\Users\\rocky\\OneDrive\\Desktop\\SimpleHoops\\Code\\NameLists\\player_names.json', 'r') as file:
+        with open(r'Code\NameLists\player_names.json', 'r') as file:
             file = json.load(file)
         
         # extract lists

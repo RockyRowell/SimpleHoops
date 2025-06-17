@@ -10,6 +10,7 @@ Lib
 Scripts
 pyvenv.cfg
 SimpleHoopsSim.egg-info
+.venv
 
 # exclude all pycache
 **/__pycache__/*
@@ -26,3 +27,4 @@ output/*
 
 # Miscellaneous
 Notes.txt
+tester.py
