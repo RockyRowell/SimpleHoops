@@ -11,12 +11,15 @@ from Generation.player_generation import PlayerGeneration
 from Generation.physicals_generation import PhysicalsGeneration
 from Generation.offense_generation import OffenseGeneration
 from Generation.defense_generation import DefenseGeneration
+from Generation.schedule_generation import ScheduleGeneration
+
 
 
 class LeagueGeneration:
-    def __init__(self, player_amount, team_amount):
+    def __init__(self, player_amount = 15, team_amount = 30, games = 0):
         self.player_amount = player_amount
         self.team_amount = team_amount
+        self.games = games
         
     # Min function to create league
     def create_league(self):
@@ -69,6 +72,7 @@ class LeagueGeneration:
             
             # add to existing df
             defense_df = pd.concat([defense_df, new_defense], ignore_index=True)
+            
         
         
         # Create Main Dataset
@@ -131,7 +135,20 @@ class LeagueGeneration:
         with open(file_path, 'w') as file:
             import json
             json.dump(league_data, file, indent=4)
+            
+            
         
+        # Create schedules for each team
+        # determine number of games
+        if self.games == 0:
+            self.games = self.team_amount * 3
+        
+        # generate schedule
+        schedule_gen = ScheduleGeneration(team_names, self.games)
+        schedule_df = schedule_gen.generate_schedule()
+        
+        # save schedule
+        schedule_df.to_json(r"Code\Data\GeneratedData\schedule.json", orient="records", indent=4)
         
         
         
